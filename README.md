@@ -43,8 +43,11 @@ poetry env info
 - black
 - in built precommit checks
 
-## Application Details
-- Django 2.2 application
+## Seed data
+- From the root of the repo, run the following management command to generate the seed data
+```sh
+python manage.py seed_data
+```
 
 ## GraphQL
 - The GraphQL interface can be accessed at `localhost:8000/graphql`
