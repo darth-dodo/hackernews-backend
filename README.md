@@ -1,5 +1,12 @@
 # reimagined-broccoli
 
+## Product Features
+- Listing of all the links (no login required)
+- Link Creation
+- User Creation
+- JWT Based authentication
+- Vote registration and unregistration by logged in Users
+
 ## Python env
 - The project uses Python 3.7. Use [PyEnv](https://github.com/pyenv/pyenv) to install the required version
 - Python environment in managed through [Poetry](https://python-poetry.org/)
@@ -168,6 +175,33 @@ mutation {
 mutation {
   verifyToken(token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImR1bW15LTEiLCJleHAiOjE1ODczMDg5NjksIm9yaWdJYXQiOjE1ODczMDg2Njl9.sBVGWqOnHxWv7f1zeJqb6V-CUZGZ4rxKDEIbqLtsZQY"){
     payload
+  }
+}
+```
+
+
+- Create Vote
+```graphql
+mutation {
+  createVote(linkId: 4){
+    vote {
+      created
+      user {
+        username
+      }
+      link {
+        url
+      }
+    }
+  }
+}
+```
+
+- Register Unvote
+```graphql
+mutation {
+  registerUnvote(linkId: 4){
+    success
   }
 }
 ```
