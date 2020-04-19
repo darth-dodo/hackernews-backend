@@ -31,6 +31,7 @@ poetry env info
 - Django Filters
 - [Graphene Django](https://github.com/graphql-python/graphene-django)
 - [Django GraphQL JWT](https://github.com/flavors/django-graphql-jwt)
+- The Insomnia API collection can be used to interact with the application locally is present over [here](https://github.com/darth-dodo/reimagined-broccoli/blob/master/Insomnia_2020-04-19.json)
 
 ## API interaction
 - The GraphQL interface can be accessed using the inbuilt Graphene UI present at `localhost:8000/grapqhl` but it does not support JWT Auth
@@ -312,3 +313,9 @@ mutation {
 ## Error Handling
 - [GraphQL servers don't return anything but 200 and 500](https://github.com/graphql-python/graphene-django/issues/804#issuecomment-544266674)
 - Custom middleware can handle errors of the instance `GraphQLError` if specific responses are desired
+
+
+## Further Reading
+- [Four years of GraphQL](https://www.youtube.com/watch?v=zVNrqo9XGOs)
+- [Graphene in Detail](http://docs.graphene-python.org/projects/django/en/latest/)
+- [GraphQL official learning guide](https://graphql.org/learn/)
