@@ -43,8 +43,11 @@ poetry env info
 - black
 - in built precommit checks
 
-## Application Details
-- Django 2.2 application
+## Seed data
+- From the root of the repo, run the following management command to generate the seed data
+```sh
+python manage.py seed_data
+```
 
 ## GraphQL
 - The GraphQL interface can be accessed at `localhost:8000/graphql`
@@ -131,6 +134,25 @@ query {
 query {
   vanillaFilteredLinks(search: "gringotts"){
     url
+  }
+}
+```
+
+- Paginate the List of links data by using `skip` and `page size (first)`:
+```graphql
+query {
+  paginatedLinks(search: ".com", skip:10, first: 20){
+    url
+    description
+  }
+}
+```
+
+```graphql
+query {
+  paginatedLinks(search: ".biz", first: 3){
+    url
+    description
   }
 }
 ```
