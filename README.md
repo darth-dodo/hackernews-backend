@@ -228,3 +228,8 @@ mutation {
   }
 }
 ```
+
+
+## Error Handling
+- [GraphQL servers don't return anything but 200 and 500](https://github.com/graphql-python/graphene-django/issues/804#issuecomment-544266674)
+- Custom middleware can handle errors of the instance `GraphQLError` if specific responses are desired
