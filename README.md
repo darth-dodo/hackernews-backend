@@ -73,10 +73,24 @@ query{
 - Fetch JWT token user Details
 ```graphql
 # provide the JWT in Auth headers
+
 query{
   me {
     username
     email
+  }
+}
+```
+
+- Fetch List of Links with the HN User Information
+```graphql
+query {
+  links{
+    id
+    url
+    postedBy{
+      username
+    }
   }
 }
 ```
@@ -94,6 +108,20 @@ mutation {
     url
     description
     id
+  }
+}
+```
+
+```graphql
+mutation {
+  createLink(url: "https://github.com/darth-dodo/discuss-it", description: "Phoenix and Elixir clone") {
+    id
+    url
+    description
+    postedBy {
+      username
+      email
+    }
   }
 }
 ```
@@ -116,6 +144,7 @@ mutation {
 
 ```graphql
 # generate the JWT payload
+
 mutation {
   tokenAuth(username: "dummy-1", password: "dummypassword"){
     payload
@@ -124,7 +153,8 @@ mutation {
 ```
 
 ```graphql
-// generate the JWT token
+# generate the JWT token
+
 mutation {
   tokenAuth(username: "dummy-1", password: "dummypassword"){
     token
