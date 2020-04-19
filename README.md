@@ -12,6 +12,10 @@ poetry install
 ```
 poetry shell
 ```
+- To check out more details about your virtualenv please run the command
+```sh
+poetry env info
+```
 - In case of questions, please checkout the guide to maintaining virtual envs and python versions with over [here](https://python-poetry.org/docs/managing-environments/)
 
 
