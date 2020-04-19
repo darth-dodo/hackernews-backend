@@ -312,3 +312,9 @@ mutation {
 ## Error Handling
 - [GraphQL servers don't return anything but 200 and 500](https://github.com/graphql-python/graphene-django/issues/804#issuecomment-544266674)
 - Custom middleware can handle errors of the instance `GraphQLError` if specific responses are desired
+
+
+## Further Reading
+- [Four years of GraphQL](https://www.youtube.com/watch?v=zVNrqo9XGOs)
+- [Graphene in Detail](http://docs.graphene-python.org/projects/django/en/latest/)
+- [GraphQL official learning guide](https://graphql.org/learn/)
