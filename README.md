@@ -82,6 +82,19 @@ query{
 }
 ```
 
+- Fetch List of Links with the HN User Information
+```graphql
+query {
+  links{
+    id
+    url
+    postedBy{
+      username
+    }
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
