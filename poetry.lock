@@ -183,14 +183,6 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 category = "main"
-description = "Django-environ allows you to utilize 12factor inspired environment variables to configure your Django application."
-name = "django-environ"
-optional = false
-python-versions = "*"
-version = "0.4.5"
-
-[[package]]
-category = "main"
 description = "Extensions for Django"
 name = "django-extensions"
 optional = false
@@ -217,13 +209,13 @@ description = "JSON Web Token for Django GraphQL"
 name = "django-graphql-jwt"
 optional = false
 python-versions = "*"
-version = "0.1.5"
+version = "0.3.1"
 
 [package.dependencies]
 Django = ">=1.11"
 PyJWT = ">=1.5.0"
-django-environ = ">=0.4.4"
-graphene = ">=2.0.0"
+graphene-django = ">=2.1.5"
+graphql-core = ">=2.1,<3"
 
 [[package]]
 category = "main"
@@ -700,7 +692,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "e4fc622a3846697efd86d63d87f831c53012c0aad4edfd24eafc14201b596841"
+content-hash = "60c9101a29cd904fe1ff674c9ddeafefbb89a5cc8317ccccc4ce8b9543c0f300"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -772,10 +764,6 @@ django = [
     {file = "Django-2.2-py3-none-any.whl", hash = "sha256:a2814bffd1f007805b19194eb0b9a331933b82bd5da1c3ba3d7b7ba16e06dc4b"},
     {file = "Django-2.2.tar.gz", hash = "sha256:7c3543e4fb070d14e10926189a7fcf42ba919263b7473dceaefce34d54e8a119"},
 ]
-django-environ = [
-    {file = "django-environ-0.4.5.tar.gz", hash = "sha256:6c9d87660142608f63ec7d5ce5564c49b603ea8ff25da595fd6098f6dc82afde"},
-    {file = "django_environ-0.4.5-py2.py3-none-any.whl", hash = "sha256:c57b3c11ec1f319d9474e3e5a79134f40174b17c7cc024bbb2fad84646b120c4"},
-]
 django-extensions = [
     {file = "django-extensions-2.2.9.tar.gz", hash = "sha256:2f81b618ba4d1b0e58603e25012e5c74f88a4b706e0022a3b21f24f0322a6ce6"},
     {file = "django_extensions-2.2.9-py2.py3-none-any.whl", hash = "sha256:b19182d101a441fe001c5753553a901e2ef3ff60e8fbbe38881eb4a61fdd17c4"},
@@ -785,8 +773,8 @@ django-filter = [
     {file = "django_filter-2.0.0-py3-none-any.whl", hash = "sha256:86c3925020c27d072cdae7b828aaa5d165c2032a629abbe3c3a1be1edae61c58"},
 ]
 django-graphql-jwt = [
-    {file = "django-graphql-jwt-0.1.5.tar.gz", hash = "sha256:3af826631bd710ac1bdd3c7f796259f274a855514d26157b466bb82299b38eed"},
-    {file = "django_graphql_jwt-0.1.5-py2.py3-none-any.whl", hash = "sha256:9126bdf095e6c199ade6682106ab5d3e32af94fbfe0e24de36f6613050ae4306"},
+    {file = "django-graphql-jwt-0.3.1.tar.gz", hash = "sha256:468e09b8ce67324fcba21dc33b7c1ea9d234bfc10df7cbfe9c5477be0302f933"},
+    {file = "django_graphql_jwt-0.3.1-py2.py3-none-any.whl", hash = "sha256:2189f6d1a13b827d486780fa74a631a15e4f7f0235a3a87a487736b5b0dc4690"},
 ]
 filelock = [
     {file = "filelock-3.0.12-py3-none-any.whl", hash = "sha256:929b7d63ec5b7d6b71b0fa5ac14e030b3f70b75747cef1b10da9b879fef15836"},

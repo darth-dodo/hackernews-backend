@@ -25,9 +25,17 @@ class HNUserType(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     hn_users = graphene.List(HNUserType)
+    me = graphene.Field(HNUserType)
 
     def resolve_hn_users(self, info, **kwargs):
         return HNUser.objects.all()
+
+    def resolve_me(self, info, **kwargs):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception("Not Logged in!")
+
+        return user.hn_user
 
 
 class CreateHNUser(graphene.Mutation):

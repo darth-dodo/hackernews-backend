@@ -18,6 +18,17 @@ poetry env info
 ```
 - In case of questions, please checkout the guide to maintaining virtual envs and python versions with over [here](https://python-poetry.org/docs/managing-environments/)
 
+## Application Details
+- Python 3.7
+- Django 2.2
+- Django Filters
+- [Graphene Django](https://github.com/graphql-python/graphene-django)
+- [Django GraphQL JWT](https://github.com/flavors/django-graphql-jwt)
+
+## API interaction
+- The GraphQL interface can be accessed using the inbuilt Graphene UI present at `localhost:8000/grapqhl` but it does not support JWT Auth
+- To use GraphQL with JWT Auth checkout **[Insomnia](https://insomnia.rest/)** or **[Postman](https://www.postman.com/)**
+
 
 # Precommit hooks
 - isort
@@ -59,6 +70,17 @@ query{
 }
 ```
 
+- Fetch JWT token user Details
+```graphql
+# provide the JWT in Auth headers
+query{
+  me {
+    username
+    email
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
@@ -88,6 +110,34 @@ mutation {
     hnUser {
       bio
     }
+  }
+}
+```
+
+```graphql
+# generate the JWT payload
+mutation {
+  tokenAuth(username: "dummy-1", password: "dummypassword"){
+    payload
+  }
+}
+```
+
+```graphql
+// generate the JWT token
+mutation {
+  tokenAuth(username: "dummy-1", password: "dummypassword"){
+    token
+  }
+}
+```
+
+```graphql
+# verify the JWT token
+
+mutation {
+  verifyToken(token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImR1bW15LTEiLCJleHAiOjE1ODczMDg5NjksIm9yaWdJYXQiOjE1ODczMDg2Njl9.sBVGWqOnHxWv7f1zeJqb6V-CUZGZ4rxKDEIbqLtsZQY"){
+    payload
   }
 }
 ```
