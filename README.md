@@ -70,6 +70,17 @@ query{
 }
 ```
 
+- Fetch JWT token user Details
+```graphql
+# provide the JWT in Auth headers
+query{
+  me {
+    username
+    email
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
@@ -104,7 +115,7 @@ mutation {
 ```
 
 ```graphql
-// generate the JWT payload
+# generate the JWT payload
 mutation {
   tokenAuth(username: "dummy-1", password: "dummypassword"){
     payload
@@ -121,8 +132,9 @@ mutation {
 }
 ```
 
-//verify the JWT token
 ```graphql
+# verify the JWT token
+
 mutation {
   verifyToken(token: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VybmFtZSI6ImR1bW15LTEiLCJleHAiOjE1ODczMDg5NjksIm9yaWdJYXQiOjE1ODczMDg2Njl9.sBVGWqOnHxWv7f1zeJqb6V-CUZGZ4rxKDEIbqLtsZQY"){
     payload
