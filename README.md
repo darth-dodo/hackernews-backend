@@ -57,10 +57,18 @@ poetry env info
 - Fetch `Link`s data
 ```graphql
 query {
-  links {
-    url
-    description
+  links{
     id
+    url
+    linkVotes{
+      created
+      user{
+        username
+      }
+    }
+    postedBy{
+      username
+    }
   }
 }
 ```
@@ -96,6 +104,21 @@ query {
     id
     url
     postedBy{
+      username
+    }
+  }
+}
+```
+
+- Fetch List of Votes
+```graphql
+query {
+  votes{
+    created
+    link{
+      url
+    }
+    user{
       username
     }
   }
