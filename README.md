@@ -13,3 +13,13 @@ poetry install
 poetry shell
 ```
 - In case of questions, please checkout the guide to maintaining virtual envs and python versions with over [here](https://python-poetry.org/docs/managing-environments/)
+
+
+# Precommit hooks
+- isort
+- flake8
+- black
+- in built precommit checks
+
+## Application Details
+- Django 2.2 application
