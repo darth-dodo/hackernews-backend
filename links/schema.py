@@ -1,5 +1,6 @@
 import graphene
 from graphene_django import DjangoObjectType
+from graphql import GraphQLError
 
 from hn_users.schema import HNUserType
 from links.models import Link, Vote
@@ -61,17 +62,17 @@ class CreateVote(graphene.Mutation):
     def mutate(self, info, link_id):
         user = info.context.user
         if user.is_anonymous:
-            raise Exception("Please login to vote!")
+            raise GraphQLError("Please login to vote!")
 
         try:
             hn_user = user.hn_user
         except AttributeError:
-            raise Exception("Invalid User!")
+            raise GraphQLError("Invalid User!")
 
         try:
             link = Link.objects.get(id=link_id)
         except Link.DoesNotExist:
-            raise Exception("Invalid Link!")
+            raise GraphQLError("Invalid Link!")
 
         new_vote = Vote()
         new_vote.user = hn_user
@@ -90,12 +91,12 @@ class RegisterUnvote(graphene.Mutation):
     def mutate(self, info, link_id):
         user = info.context.user
         if user.is_anonymous:
-            raise Exception("Please login to unvote!")
+            raise GraphQLError("Please login to unvote!")
 
         try:
             hn_user = user.hn_user
         except AttributeError:
-            raise Exception("Invalid User!")
+            raise GraphQLError("Invalid User!")
 
         try:
             vote = hn_user.hn_user_votes.get(link_id=link_id)
