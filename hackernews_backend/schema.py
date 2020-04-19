@@ -3,9 +3,15 @@ import graphql_jwt
 
 from hn_users import schema as hn_users_schema
 from links import schema as links_schema
+from links import schema_relay as links_schema_relay
 
 
-class Query(hn_users_schema.Query, links_schema.Query, graphene.ObjectType):
+class Query(
+    hn_users_schema.Query,
+    links_schema.Query,
+    links_schema_relay.RelayQuery,
+    graphene.ObjectType,
+):
     pass
 
 
