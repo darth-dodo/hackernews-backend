@@ -4,7 +4,7 @@
 - The project uses Python 3.7. Use [PyEnv](https://github.com/pyenv/pyenv) to install the required version
 - Python environment in managed through [Poetry](https://python-poetry.org/)
 - Install Poetry using instructions present [here]()
-- Install the project virtual env and packages using the command. **Make sure you have set the `local` Python version to 3.7
+- Install the project virtual env and packages using the command. **Make sure you have set the `local` Python version to 3.7**
 ```sh
 poetry install
 ```
@@ -23,3 +23,39 @@ poetry shell
 
 ## Application Details
 - Django 2.2 application
+
+## GraphQL
+- The GraphQL interface can be accessed at `localhost:8000/graphql`
+- GraphQL interfaces are of the following types:
+    - Query - analogous to DQL statemets
+    - Mutations - analogous to DML and DDL statements
+
+---
+### Query
+- Fetch `Link`s data
+```graphql
+query {
+  links {
+    url
+    description
+    id
+  }
+}
+```
+
+---
+### Mutations
+- Create `Link`
+
+```graphql
+mutation {
+  createLink(
+  description: "Hustlers Den",
+  url: "https://github.com/darth-dodo/hustlers-den"
+  ){
+    url
+    description
+    id
+  }
+}
+```
