@@ -125,6 +125,16 @@ query {
 }
 ```
 
+
+- List of Votes filtered by Vanilla Search using `Q` operator
+```graphql
+query {
+  vanillaFilteredLinks(search: "gringotts"){
+    url
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
