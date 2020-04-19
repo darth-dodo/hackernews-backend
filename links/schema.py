@@ -68,7 +68,14 @@ class CreateLink(graphene.Mutation):
 
     def mutate(self, info, url, description):
 
-        hn_user = info.context.user.hn_user or None
+        user = info.context.user
+        if user.is_anonymous:
+            raise GraphQLError("Please login to submit a Link!")
+
+        try:
+            hn_user = user.hn_user
+        except AttributeError:
+            raise GraphQLError("Please login to submit a Link!")
 
         link = Link()
         link.url = url

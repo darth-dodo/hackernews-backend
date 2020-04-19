@@ -15,7 +15,12 @@ class Query(
     pass
 
 
-class Mutation(hn_users_schema.Mutation, links_schema.Mutation, graphene.ObjectType):
+class Mutation(
+    hn_users_schema.Mutation,
+    links_schema.Mutation,
+    links_schema_relay.RelayMutation,
+    graphene.ObjectType,
+):
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()
 

@@ -291,6 +291,23 @@ mutation {
 }
 ```
 
+- Create a Link using the Relay functionality
+```graphql
+mutation {
+  relayCreateLink(input: {
+    url: "https://github.com/darth-dodo/meal-helper",
+    description:  "Meal Plan Management tool"
+  }) {
+    link {
+      id
+      created
+      url
+      description
+    }
+  }
+}
+```
+
 
 ## Error Handling
 - [GraphQL servers don't return anything but 200 and 500](https://github.com/graphql-python/graphene-django/issues/804#issuecomment-544266674)
