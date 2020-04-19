@@ -157,6 +157,36 @@ query {
 }
 ```
 
+- Using Relay and Graphene to generate Edges and Nodes. Edges are a collection of nodes and Relay allows for pagination functionality out of the box
+```graphql
+query {
+  relayLinks(first: 3) {
+    edges {
+      node {
+        id
+        url
+        description
+        linkVotes {
+          edges {
+            node {
+              id
+              created
+              user {
+                username
+              }
+            }
+          }
+        }
+      }
+    }
+    pageInfo {
+      startCursor
+      endCursor
+    }
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
@@ -257,6 +287,23 @@ mutation {
 mutation {
   registerUnvote(linkId: 4){
     success
+  }
+}
+```
+
+- Create a Link using the Relay functionality
+```graphql
+mutation {
+  relayCreateLink(input: {
+    url: "https://github.com/darth-dodo/meal-helper",
+    description:  "Meal Plan Management tool"
+  }) {
+    link {
+      id
+      created
+      url
+      description
+    }
   }
 }
 ```
