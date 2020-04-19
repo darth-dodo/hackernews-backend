@@ -31,6 +31,7 @@ poetry env info
 - Django Filters
 - [Graphene Django](https://github.com/graphql-python/graphene-django)
 - [Django GraphQL JWT](https://github.com/flavors/django-graphql-jwt)
+- The Insomnia API collection can be used to interact with the application locally is present over [here](https://github.com/darth-dodo/reimagined-broccoli/blob/master/Insomnia_2020-04-19.json)
 
 ## API interaction
 - The GraphQL interface can be accessed using the inbuilt Graphene UI present at `localhost:8000/grapqhl` but it does not support JWT Auth
