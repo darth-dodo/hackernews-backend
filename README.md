@@ -138,6 +138,25 @@ query {
 }
 ```
 
+- Paginate the List of links data by using `skip` and `page size (first)`:
+```graphql
+query {
+  paginatedLinks(search: ".com", skip:10, first: 20){
+    url
+    description
+  }
+}
+```
+
+```graphql
+query {
+  paginatedLinks(search: ".biz", first: 3){
+    url
+    description
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`

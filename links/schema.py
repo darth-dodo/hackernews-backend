@@ -21,6 +21,9 @@ class Query(graphene.ObjectType):
     links = graphene.List(LinkType)
     votes = graphene.List(VoteType)
     vanilla_filtered_links = graphene.List(LinkType, search=graphene.String())
+    paginated_links = graphene.List(
+        LinkType, search=graphene.String(), first=graphene.Int(), skip=graphene.Int()
+    )
 
     def resolve_links(self, info, **kwargs):
         return Link.objects.all()
@@ -34,6 +37,23 @@ class Query(graphene.ObjectType):
             return Link.objects.filter(search_filters)
 
         return Link.objects.all()
+
+    def resolve_paginated_links(
+        self, info, search=None, first=None, skip=None, **kwargs
+    ):
+        qs = Link.objects.all()
+
+        if search:
+            search_filters = Q(url__icontains=search) | Q(description__icontains=search)
+            qs = qs.filter(search_filters)
+
+        if skip:
+            qs = qs[skip:]
+
+        if first:
+            qs = qs[:first]
+
+        return qs
 
 
 class CreateLink(graphene.Mutation):
