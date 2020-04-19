@@ -77,6 +77,31 @@ class CreateVote(graphene.Mutation):
         return CreateVote(vote=new_vote)
 
 
+class RegisterUnvote(graphene.Mutation):
+    success = graphene.Boolean()
+
+    class Arguments:
+        link_id = graphene.Int()
+
+    def mutate(self, info, link_id):
+        user = info.context.user
+        if user.is_anonymous:
+            raise Exception("Please login to unvote!")
+
+        try:
+            hn_user = user.hn_user
+        except AttributeError:
+            raise Exception("Invalid User!")
+
+        try:
+            vote = hn_user.hn_user_votes.get(link_id=link_id)
+            vote.delete()
+            return RegisterUnvote(success=True)
+        except Vote.DoesNotExist:
+            return RegisterUnvote(success=None)
+
+
 class Mutation(graphene.ObjectType):
     create_link = CreateLink.Field()
     create_vote = CreateVote.Field()
+    register_unvote = RegisterUnvote.Field()
