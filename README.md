@@ -47,6 +47,18 @@ query {
 }
 ```
 
+- Fetch `HNUsers` data
+```graphql
+query{
+  hnUsers{
+    bio
+    username
+    email
+    superuserAccess
+  }
+}
+```
+
 ---
 ### Mutations
 - Create `Link`
@@ -60,6 +72,22 @@ mutation {
     url
     description
     id
+  }
+}
+```
+
+- Create HN User
+```graphql
+mutation {
+  createHnUser(
+    bio: "dummy bio"
+    email: "dummy-user@email.com"
+    password: "dummypassword"
+    username: "dummy-1"
+  ){
+    hnUser {
+      bio
+    }
   }
 }
 ```
